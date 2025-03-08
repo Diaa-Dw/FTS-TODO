@@ -20,7 +20,7 @@
     <title>TODO</title>
 
     <!-- Link index.js script -->
-    <script type="module" src="./index.js" defer></script>
+    <script type="module" defer src="./index.js"></script>
   </head>
   <body>
     <!-- header section start -->
@@ -95,18 +95,6 @@
           <!-- table-body starzt -->
           <tbody class="todo-list__table-body"></tbody>
           <!-- table-body end -->
-
-          <!-- table-footer start -->
-          <tfoot class="todo-list__table-footer">
-            <tr class="todo-list__footer-row">
-              <td colspan="3" class="todo-list__task-count">Total tasks: 5</td>
-              <td class="todo-list__task-count">
-                <span> Completed: 5 </span>
-                <span> Pending: 5 </span>
-              </td>
-            </tr>
-          </tfoot>
-          <!-- table-footer end -->
         </table>
       </section>
       <!-- table section end -->
@@ -114,6 +102,28 @@
     <!-- main section end -->
 
     <footer class="footer">
+      <div class="task-count">
+        <p class="task-count__total">
+          Total Tasks:
+          <span class="task-count__number task-count__number--all">0</span>
+        </p>
+
+        <p class="task-count__status">
+          <span class="task-count__completed"
+            >Completed Tasks:
+            <span class="task-count__number task-count__number--completed"
+              >0</span
+            ></span
+          >
+          <span class="task-count__pending"
+            >Pending Tasks:
+            <span class="task-count__number task-count__number--pending"
+              >0</span
+            ></span
+          >
+        </p>
+      </div>
+
       <p class="footer__text">
         Made with <span class="footer__heart">&#10084;</span> by
         <a

@@ -1,7 +1,42 @@
 .footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+}
+
+/* Styling tasks count container */
+.task-count {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+.task-count__status {
+  display: flex;
+  gap: 20px;
+}
+.task-count__number {
+  padding: 0.5rem 1rem;
+
+  border-radius: 5px;
+
+  color: var(--primary-color);
+}
+
+.task-count__number--all {
+  background-color: var(--blue);
+}
+
+.task-count__number--completed {
+  background-color: var(--green);
+}
+
+.task-count__number--pending {
+  background-color: var(--orange);
 }
 
 .footer__link {

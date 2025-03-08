@@ -13,9 +13,6 @@ export const getTodoTemplate = (todo) => {
               </td>
               <td class="todo-list__table-cell" data-label="Actions">
                 <div class="todo-list__actions-container">
-                  <button class="todo-list__button todo-list__button--edit">
-                    <i class="fas fa-edit"></i>
-                  </button>
                   <button class="todo-list__button todo-list__button--done">
                     <i class="fas fa-check"></i>
                   </button>
