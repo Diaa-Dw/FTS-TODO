@@ -10,8 +10,10 @@
 .task-count {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 
   margin-bottom: 20px;
 }
@@ -19,24 +21,17 @@
   display: flex;
   gap: 20px;
 }
-.task-count__number {
-  padding: 0.5rem 1rem;
-
-  border-radius: 5px;
-
-  color: var(--primary-color);
-}
 
 .task-count__number--all {
-  background-color: var(--blue);
+  color: var(--blue);
 }
 
 .task-count__number--completed {
-  background-color: var(--green);
+  color: var(--green);
 }
 
 .task-count__number--pending {
-  background-color: var(--orange);
+  color: var(--orange);
 }
 
 .footer__link {
