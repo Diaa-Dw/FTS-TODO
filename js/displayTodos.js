@@ -1,5 +1,6 @@
 import { getTodoTemplate } from "./todoTemplate.js";
 
+
 const tableBodyElement = document.querySelector(".todo-list__table-body");
 
 export const displayTodos = (todos) => {
