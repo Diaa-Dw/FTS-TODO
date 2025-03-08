@@ -1,0 +1,11 @@
+/*abstract css */
+@import url("abstracts/variables.css");
+
+/* base css */
+@import url("base/reset.css");
+
+/* Layouts */
+@import url("layout/header.css");
+@import url("layout/taskForm.css");
+@import url("layout/tasksTable.css");
+@import url("layout/footer.css");

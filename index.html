@@ -22,15 +22,15 @@
   <body>
     <!-- header section start -->
     <header class="header">
-      <h1>TODO</h1>
+      <h1 class="header__title">TODO</h1>
       <button class="theme-toggle">
         <img
-          src="./assets/images/sun.png"
+          src="./assets/images/icon-sun.svg"
           alt="light-theme"
-          class="theme-toggle__icon theme-toggle__icon--light"
+          class="theme-toggle__icon theme-toggle__icon--light active"
         />
         <img
-          src="./assets/images/moon.png"
+          src="./assets/images/icon-moon.svg"
           alt="dark-theme"
           class="theme-toggle__icon theme-toggle__icon--dark"
         />
@@ -38,74 +38,247 @@
     </header>
     <!-- header section end -->
 
+    <!-- main section start -->
     <main class="todo-list">
       <!-- Form section start -->
-      <section>
+      <section class="todo-list__form-container">
         <form aria-label="Add new task" class="todo-list__form">
-          <input
-            type="text"
-            placeholder="Add new task..."
-            class="todo-list__input--add"
-            required
-          />
-          <button type="submit" class="todo-list__button--add">Add</button>
+          <div class="todo-list__input-container">
+            <label for="add_task">
+              <i class="fa-solid fa-plus"></i>
+            </label>
+            <input
+              type="text"
+              name="add_task"
+              id="add_task"
+              placeholder="Add new task..."
+              class="todo-list__input--add"
+              required
+            />
+          </div>
+          <button type="submit" class="todo-list__button--add btn">Add</button>
         </form>
-        <input
-          type="search"
-          placeholder="Search tasks..."
-          aria-label="Search tasks"
-          class="todo-list__search"
-        />
+        <div class="todo-list__input-container">
+          <label for="search_task">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </label>
+          <input
+            type="search"
+            name="search_task"
+            id="search_task"
+            placeholder="Search tasks..."
+            aria-label="Search tasks"
+            class="todo-list__search"
+          />
+        </div>
       </section>
 
       <!-- Form section end -->
 
       <!-- table section start -->
-      <table class="todo-list__table">
-        <!-- table-header start -->
-        <thead class="todo-list__table-head">
-          <tr class="todo-list__table-row">
-            <th class="todo-list__table-header">ID</th>
-            <th class="todo-list__table-header">Description</th>
-            <th class="todo-list__table-header">Status</th>
-            <th class="todo-list__table-header">Actions</th>
-          </tr>
-        </thead>
-        <!-- table-header end -->
+      <section class="todo-list__table-container">
+        <table class="todo-list__table">
+          <!-- table-header start -->
+          <thead class="todo-list__table-head">
+            <tr class="todo-list__table-row">
+              <th class="todo-list__table-header">ID</th>
+              <th class="todo-list__table-header">Description</th>
+              <th class="todo-list__table-header">Status</th>
+              <th class="todo-list__table-header">Actions</th>
+            </tr>
+          </thead>
+          <!-- table-header end -->
 
-        <!-- table-body start -->
-        <tbody class="todo-list__table-body">
-          <tr class="todo-list__table-row todo-list__table-row--completed">
-            <td class="todo-list__table-cell">1</td>
-            <td class="todo-list__table-cell">
-              Complete Frontend-Mentor challenge
-            </td>
-            <td class="todo-list__table-cell">Completed</td>
-            <td class="todo-list__table-cell">
-              <button class="todo-list__button todo-list__button--edit">
-                <i class="fas fa-edit"></i>
-              </button>
-              <button class="todo-list__button todo-list__button--done">
-                <i class="fas fa-check"></i>
-              </button>
-              <button class="todo-list__button todo-list__button--delete">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-        <!-- table-body end -->
+          <!-- table-body starzt -->
+          <tbody class="todo-list__table-body">
+            <tr class="todo-list__table-row todo-list__table-row--completed">
+              <td class="todo-list__table-cell">1</td>
+              <td class="todo-list__table-cell" data-label="Task">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos pariatur quae ab. Distinctio ab aspernatur iste
+                provident et dolor asperiores culpa assumenda laboriosam
+                expedita nobis necessitatibus dolorum ducimus commodi veniam,
+                eveniet minima, sint iure laborum. Nulla quod error ullam
+                ducimus?
+              </td>
+              <td class="todo-list__table-cell" data-label="Status">
+                <span class="todo-list__task-status completed">
+                  Completed
+                </span>
+              </td>
+              <td class="todo-list__table-cell" data-label="Actions">
+                <div class="todo-list__actions-container">
+                  <button class="todo-list__button todo-list__button--edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--done">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
 
-        <!-- table-footer start -->
-        <tfoot class="todo-list__table-footer">
-          <tr>
-            <td colspan="5" class="todo-list__task-count">Total tasks: 5</td>
-          </tr>
-        </tfoot>
-        <!-- table-footer end -->
-      </table>
+            <tr class="todo-list__table-row todo-list__table-row--completed">
+              <td class="todo-list__table-cell">1</td>
+              <td class="todo-list__table-cell" data-label="Task">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos pariatur quae ab. Distinctio ab aspernatur iste
+                provident et dolor asperiores culpa assumenda laboriosam
+                expedita nobis necessitatibus dolorum ducimus commodi veniam,
+                eveniet minima, sint iure laborum. Nulla quod error ullam
+                ducimus?
+              </td>
+              <td class="todo-list__table-cell" data-label="Status">
+                <span class="todo-list__task-status pending"> Pending </span>
+              </td>
+              <td class="todo-list__table-cell" data-label="Actions">
+                <div class="todo-list__actions-container">
+                  <button class="todo-list__button todo-list__button--edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--done">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="todo-list__table-row todo-list__table-row--completed">
+              <td class="todo-list__table-cell">1</td>
+              <td class="todo-list__table-cell" data-label="Task">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos pariatur quae ab. Distinctio ab aspernatur iste
+                provident et dolor asperiores culpa assumenda laboriosam
+                expedita nobis necessitatibus dolorum ducimus commodi veniam,
+                eveniet minima, sint iure laborum. Nulla quod error ullam
+                ducimus?
+              </td>
+              <td class="todo-list__table-cell" data-label="Status">
+                <span class="todo-list__task-status pending"> Pending </span>
+              </td>
+              <td class="todo-list__table-cell" data-label="Actions">
+                <div class="todo-list__actions-container">
+                  <button class="todo-list__button todo-list__button--edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--done">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="todo-list__table-row todo-list__table-row--completed">
+              <td class="todo-list__table-cell">1</td>
+              <td class="todo-list__table-cell" data-label="Task">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos pariatur quae ab. Distinctio ab aspernatur iste
+                provident et dolor asperiores culpa assumenda laboriosam
+                expedita nobis necessitatibus dolorum ducimus commodi veniam,
+                eveniet minima, sint iure laborum. Nulla quod error ullam
+                ducimus?
+              </td>
+              <td class="todo-list__table-cell" data-label="Status">
+                <span class="todo-list__task-status pending"> Pending </span>
+              </td>
+              <td class="todo-list__table-cell" data-label="Actions">
+                <div class="todo-list__actions-container">
+                  <button class="todo-list__button todo-list__button--edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--done">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="todo-list__table-row todo-list__table-row--completed">
+              <td class="todo-list__table-cell">1</td>
+              <td class="todo-list__table-cell" data-label="Task">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos pariatur quae ab. Distinctio ab aspernatur iste
+                provident et dolor asperiores culpa assumenda laboriosam
+                expedita nobis necessitatibus dolorum ducimus commodi veniam,
+                eveniet minima, sint iure laborum. Nulla quod error ullam
+                ducimus?
+              </td>
+              <td class="todo-list__table-cell" data-label="Status">
+                <span class="todo-list__task-status pending"> Pending </span>
+              </td>
+              <td class="todo-list__table-cell" data-label="Actions">
+                <div class="todo-list__actions-container">
+                  <button class="todo-list__button todo-list__button--edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--done">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="todo-list__table-row todo-list__table-row--completed">
+              <td class="todo-list__table-cell">1</td>
+              <td class="todo-list__table-cell" data-label="Task">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos pariatur quae ab. Distinctio ab aspernatur iste
+                provident et dolor asperiores culpa assumenda laboriosam
+                expedita nobis necessitatibus dolorum ducimus commodi veniam,
+                eveniet minima, sint iure laborum. Nulla quod error ullam
+                ducimus?
+              </td>
+              <td class="todo-list__table-cell" data-label="Status">
+                <span class="todo-list__task-status pending"> Pending </span>
+              </td>
+              <td class="todo-list__table-cell" data-label="Actions">
+                <div class="todo-list__actions-container">
+                  <button class="todo-list__button todo-list__button--edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--done">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="todo-list__button todo-list__button--delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          <!-- table-body end -->
+
+          <!-- table-footer start -->
+          <tfoot class="todo-list__table-footer">
+            <tr class="todo-list__footer-row">
+              <td colspan="3" class="todo-list__task-count">Total tasks: 5</td>
+              <td class="todo-list__task-count">
+                <span> Completed: 5 </span>
+                <span> Pending: 5 </span>
+              </td>
+            </tr>
+          </tfoot>
+          <!-- table-footer end -->
+        </table>
+      </section>
       <!-- table section end -->
     </main>
+    <!-- main section end -->
 
     <footer class="footer">
       <p class="footer__text">
@@ -114,13 +287,9 @@
           href="https://diaa-dwikat.netlify.app"
           target="_blank"
           class="footer__link"
-          >Diaa Dwikat</a
+          >Diaa</a
         >
       </p>
     </footer>
-
-    <!-- main section start -->
-
-    <!-- main section end -->
   </body>
 </html>
