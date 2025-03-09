@@ -2,11 +2,13 @@
 import { displayTodos } from "./js/displayTodos.js";
 import { fetchTodos } from "./js/fetchTodos.js";
 import { handleAddTask } from "./js/handleAddTask.js";
-import { incrementTaskCount } from "./js/incrementTaskCount.js";
+import { removeTaskHandler } from "./js/handleRemoveTask.js";
+import { onTaskCountChange } from "./js/taskCountHandler.js";
 import { updateTableFooter } from "./js/updateFooter.js";
 
 //DOM
 const todoFormElement = document.querySelector(".todo-list__form");
+const tableBodyElement = document.querySelector(".todo-list__table-body");
 
 // Global array for saving todos inside it
 let todos = [];
@@ -15,7 +17,6 @@ let todos = [];
 async function loadTods() {
   try {
     todos = await fetchTodos();
-    console.log("🚀 ~ loadTods ~ todos:", todos);
     displayTodos(todos);
     updateTableFooter(todos);
   } catch (error) {
@@ -27,13 +28,18 @@ async function loadTods() {
 async function onAddTask(e) {
   e.preventDefault();
   const createdTask = await handleAddTask();
-  console.log("🚀 ~ onAddTask ~ todos:", todos);
 
   todos = [...todos, createdTask];
 
-  incrementTaskCount();
+  onTaskCountChange("add");
+}
+
+// Function to handle remove task
+function onRemoveTask(e) {
+  removeTaskHandler(e, todos);
 }
 
 document.addEventListener("DOMContentLoaded", loadTods);
 
 todoFormElement.addEventListener("submit", onAddTask);
+tableBodyElement.addEventListener("click", onRemoveTask);

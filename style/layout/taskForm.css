@@ -12,6 +12,7 @@
 .todo-list__form {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .todo-list__input-container {
@@ -69,4 +70,10 @@
 
 .todo-list__button--add:active {
   transform: translateY(2px);
+}
+
+@media (max-width: 442px) {
+  .todo-list__button--add {
+    flex-grow: 1;
+  }
 }
