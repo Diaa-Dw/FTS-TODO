@@ -1,19 +1,19 @@
 //Handler function for fetching data from API
-import { changeTodoStatus } from "./js/changeTodoStatus.js";
-import { displayTodos } from "./js/displayTodos.js";
-import { fetchTodos } from "./js/fetchTodos.js";
-import { handleAddTask } from "./js/handleAddTask.js";
-import { removeTaskHandler } from "./js/handleRemoveTask.js";
-import { loadSavedTheme } from "./js/loadSavedTheme.js";
+import { changeTodoStatus } from "./js/features/changeTodoStatus.js";
+import { displayTodos } from "./js/utils/displayTodos.js";
+import { fetchTodos } from "./js/api/fetchTodos.js";
+import { handleAddTask } from "./js/features/handleAddTask.js";
+import { removeTaskHandler } from "./js/features/handleRemoveTask.js";
+import { loadSavedTheme } from "./js/theme/loadSavedTheme.js";
 import {
   getTodosLocalStorage,
   setTodosToLocalStorage,
-} from "./js/localStorageHelper.js";
-import { searchTodosHandler } from "./js/searchTodos.js";
-import { onTaskCountChange } from "./js/taskCountHandler.js";
-import { todoInlineEditHanlder } from "./js/todoInlineEdit.js";
-import { updateTableFooter } from "./js/updateFooter.js";
-import { toggleThemeHandler } from "./js/updateTheme.js";
+} from "./js/storage/localStorageHelper.js";
+import { searchTodosHandler } from "./js/features/searchTodos.js";
+import { onTaskCountChange } from "./js/utils/taskCountHandler.js";
+import { todoInlineEditHanlder } from "./js/features/todoInlineEdit.js";
+import { updateTableFooter } from "./js/components/updateFooter.js";
+import { toggleThemeHandler } from "./js/theme/updateTheme.js";
 
 //DOM
 const todoFormElement = document.querySelector(".todo-list__form");

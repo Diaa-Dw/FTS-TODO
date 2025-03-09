@@ -1,4 +1,4 @@
-import { displayTodos } from "./displayTodos.js";
+import { displayTodos } from "../utils/displayTodos.js";
 
 let searchDelayTimer;
 export const searchTodosHandler = (e, todos) => {

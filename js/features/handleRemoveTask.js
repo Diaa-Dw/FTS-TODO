@@ -1,4 +1,4 @@
-import { onTaskCountChange } from "./taskCountHandler.js";
+import { onTaskCountChange } from "../utils/taskCountHandler.js";
 
 const SERVER_TASK_ID_LIMIT = 254;
 

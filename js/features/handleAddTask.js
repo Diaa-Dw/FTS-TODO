@@ -1,4 +1,4 @@
-import { getTodoTemplate } from "./todoTemplate.js";
+import { getTodoTemplate } from "../components/todoTemplate.js";
 
 const taskInputElement = document.querySelector(".todo-list__input--add");
 const tableBodyElement = document.querySelector(".todo-list__table-body");

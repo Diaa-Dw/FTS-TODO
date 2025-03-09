@@ -1,4 +1,4 @@
-import { getTodoTemplate } from "./todoTemplate.js";
+import { getTodoTemplate } from "../components/todoTemplate.js";
 
 
 const tableBodyElement = document.querySelector(".todo-list__table-body");
