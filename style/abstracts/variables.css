@@ -1,18 +1,30 @@
 :root {
   /* color variables */
-  --primary-color: hsl(235, 21%, 11%);
-  --secondary-color: hsl(235, 24%, 19%);
+  --primary-color: #161722;
+  --secondary-color: #25273c;
 
   --primary-font-color: hsl(236, 33%, 92%);
   --secondary-font-color: hsl(234, 39%, 85%);
 
-  --blue: hsl(220, 98%, 61%);
-  --green: #53d4ba;
-  --orange: #f39c12;
+  --primary-action-color: hsl(220, 98%, 61%);
+  --completed-status-color: #53d4ba;
+  --pending-status-color: #f39c12;
 
   /* Font varaibles */
   --font-family: "Josefin Sans", sans-serif;
   --base-font-size: 1.8rem;
   --regular-font-weight: 400;
   --bold-font-weight: 700;
+}
+
+[data-theme="light"] {
+  --primary-color: hsl(235, 40%, 81%);
+  --secondary-color: #f5f5f5;
+
+  --primary-font-color: hsl(236, 33%, 10%);
+  --secondary-font-color: hsl(234, 39%, 25%);
+
+  --primary-action-color: hsl(220, 100%, 72%);
+  --completed-status-color: #338304;
+  --pending-status-color: #ff6600;
 }

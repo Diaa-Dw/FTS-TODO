@@ -4,6 +4,7 @@ import { displayTodos } from "./js/displayTodos.js";
 import { fetchTodos } from "./js/fetchTodos.js";
 import { handleAddTask } from "./js/handleAddTask.js";
 import { removeTaskHandler } from "./js/handleRemoveTask.js";
+import { loadSavedTheme } from "./js/loadSavedTheme.js";
 import {
   getTodosLocalStorage,
   setTodosToLocalStorage,
@@ -12,11 +13,13 @@ import { searchTodosHandler } from "./js/searchTodos.js";
 import { onTaskCountChange } from "./js/taskCountHandler.js";
 import { todoInlineEditHanlder } from "./js/todoInlineEdit.js";
 import { updateTableFooter } from "./js/updateFooter.js";
+import { toggleThemeHandler } from "./js/updateTheme.js";
 
 //DOM
 const todoFormElement = document.querySelector(".todo-list__form");
 const tableBodyElement = document.querySelector(".todo-list__table-body");
 const searchInputElement = document.querySelector(".todo-list__search");
+const themeBtnElement = document.querySelector(".theme-toggle");
 // Global array for saving todos inside it
 let todos = [];
 
@@ -66,6 +69,10 @@ const taskEditHandler = (e) => {
   todoInlineEditHanlder(e, todos);
 };
 
+//Event to load user prefered theme when windows loaded
+window.addEventListener("load", loadSavedTheme);
+//Event to handle toggle between light and dark theme
+themeBtnElement.addEventListener("click", toggleThemeHandler);
 //Event to update and display tasks when updating UI
 document.addEventListener("DOMContentLoaded", loadTodos);
 //Event to handle add task

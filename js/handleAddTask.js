@@ -8,8 +8,9 @@ export const handleAddTask = async () => {
     const taskToAdd = taskInputElement.value.trim();
 
     if (taskToAdd.length < 3) {
-      alert("The task must contains at least 3 charcter please try again!");
-      return;
+      return alert(
+        "The task must contains at least 3 charcter please try again!"
+      );
     }
 
     const taskObj = {
@@ -25,6 +26,7 @@ export const handleAddTask = async () => {
       return;
     }
 
+    createdTask.id = parseInt(`${new Date().getTime()}`.slice(-7));
     const todoTemplate = getTodoTemplate(createdTask);
 
     tableBodyElement.insertAdjacentHTML("afterbegin", todoTemplate);
@@ -44,7 +46,6 @@ const addTaskToServer = async (todo) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(todo),
     });
-    console.log("🚀 ~ addTaskToServer ~ res:", res);
     if (!res.ok) {
       throw new Error(
         "Somthing went wrong while creating the task please try again!"
@@ -54,7 +55,6 @@ const addTaskToServer = async (todo) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.log("🚀 ~ addTaskToServer ~ error:", error);
     const errorMessage = `Add task error: ${error.message}`;
     alert(errorMessage);
   }

@@ -23,15 +23,15 @@
 }
 
 .task-count__number--all {
-  color: var(--blue);
+  color: var(--primary-action-color);
 }
 
 .task-count__number--completed {
-  color: var(--green);
+  color: var(--completed-status-color);
 }
 
 .task-count__number--pending {
-  color: var(--orange);
+  color: var(--pending-status-color);
 }
 
 .footer__link {

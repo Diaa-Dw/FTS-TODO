@@ -29,7 +29,7 @@
   border-bottom: 1px solid var(--secondary-font-color);
 
   font-size: 1.6rem;
-  color: var(--tertiary-font-color);
+  color: var(--secondary-font-color);
 
   background-color: transparent;
 }
@@ -47,13 +47,14 @@
 .todo-list__button--add {
   padding: 1.2rem 2rem;
 
+  color: var(--primary-font-color);
   font-weight: var(--bold-font-weight);
 
   border: 1px solid transparent;
   border-radius: 5px;
   outline: none;
 
-  background-color: var(--blue);
+  background-color: var(--primary-action-color);
   cursor: pointer;
 
   transition: all 0.3s ease-in-out;

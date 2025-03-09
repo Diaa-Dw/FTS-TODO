@@ -29,14 +29,14 @@
 
   border-radius: 5px;
 
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .todo-list__table-row[data-status="completed"] .todo-list__task-status {
-  background-color: var(--green);
+  background-color: var(--completed-status-color);
 }
 .todo-list__table-row[data-status="pending"] .todo-list__task-status {
-  background-color: var(--orange);
+  background-color: var(--pending-status-color);
 }
 
 .todo-list__actions-container {
@@ -66,6 +66,22 @@
 
 .todo-list__footer-row td {
   padding: 1rem;
+}
+
+.todo-list__table-cell-input {
+  width: 100%;
+  padding: 1rem;
+
+  color: var(--primary-font-color);
+  font-size: inherit;
+  text-align: left;
+  font-family: inherit;
+
+  border: 1px solid var(--secondary-font-color);
+  border-radius: 5px;
+  outline: none;
+
+  background: transparent;
 }
 
 /* Mobile-friendly table (convert rows to cards) */
@@ -109,7 +125,7 @@
 
     padding: 0 1rem;
 
-    color: #f5f5f5;
+    color: var(--primary-font-color);
     font-weight: var(--bold-font-weight);
 
     text-transform: capitalize;
