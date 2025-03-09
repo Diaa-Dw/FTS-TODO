@@ -1,5 +1,7 @@
 import { onTaskCountChange } from "./taskCountHandler.js";
 
+const SERVER_TASK_ID_LIMIT = 254;
+
 export const removeTaskHandler = async (e, todos) => {
   const { target } = e;
   if (!target.closest(".todo-list__button--delete")) {
@@ -24,13 +26,11 @@ export const removeTaskHandler = async (e, todos) => {
     const taskIndex = todos.findIndex((todo) => todo.id === taskId);
 
     //IF the id of task is equal or less than  254 that means it is exisist on server and we can send a delete request to server
-    if (taskId <= 254) {
+    if (taskId <= SERVER_TASK_ID_LIMIT) {
       removedTask = await dleteTaskFromServer(taskId);
     } else {
       removedTask = todos[taskIndex];
     }
-
-    const id = todos[0].id;
 
     todos.splice(taskIndex, 1);
 

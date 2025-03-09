@@ -4,6 +4,10 @@ import { displayTodos } from "./js/displayTodos.js";
 import { fetchTodos } from "./js/fetchTodos.js";
 import { handleAddTask } from "./js/handleAddTask.js";
 import { removeTaskHandler } from "./js/handleRemoveTask.js";
+import {
+  getTodosLocalStorage,
+  setTodosToLocalStorage,
+} from "./js/localStorageHelper.js";
 import { searchTodosHandler } from "./js/searchTodos.js";
 import { onTaskCountChange } from "./js/taskCountHandler.js";
 import { updateTableFooter } from "./js/updateFooter.js";
@@ -18,7 +22,12 @@ let todos = [];
 //Function that call fetchTodos and then call displayTodos to show in the table
 async function loadTodos() {
   try {
-    todos = await fetchTodos();
+    const storedTodosInLocalStorage = getTodosLocalStorage();
+    localStorage.clear();
+    todos = [...storedTodosInLocalStorage];
+    if (!todos.length) {
+      todos = await fetchTodos();
+    }
     displayTodos(todos);
     updateTableFooter(todos);
   } catch (error) {
@@ -31,7 +40,7 @@ async function onAddTask(e) {
   e.preventDefault();
   const createdTask = await handleAddTask();
 
-  todos = [...todos, createdTask];
+  todos = [createdTask, ...todos];
 
   onTaskCountChange("add");
 }
@@ -48,6 +57,10 @@ function onTaskStatusChange(e) {
 const onSearchChange = (e) => {
   searchTodosHandler(e, todos);
 };
+//Save todos to localStorage before closing or refrush window
+const handleBeforeUnload = () => {
+  setTodosToLocalStorage(todos);
+};
 
 //Event to update and display tasks when updating UI
 document.addEventListener("DOMContentLoaded", loadTodos);
@@ -59,3 +72,5 @@ tableBodyElement.addEventListener("click", onRemoveTask);
 tableBodyElement.addEventListener("click", onTaskStatusChange);
 //Event to handle search input and filter todos
 searchInputElement.addEventListener("input", onSearchChange);
+//Event to save todos into localStorage before browser refuresh or close
+window.addEventListener("beforeunload", handleBeforeUnload);
