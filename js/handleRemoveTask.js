@@ -16,9 +16,9 @@ export const removeTaskHandler = async (e, todos) => {
     target.disable = true;
     let removedTask = null;
 
-    const row = target.closest(".todo-list__table-row");
-    const taskId = parseInt(row.dataset.id);
-    row.remove();
+    const rowElement = target.closest(".todo-list__table-row");
+    const taskId = parseInt(rowElement.dataset.id);
+    rowElement.remove();
 
     //Find index of task to remove and using splice to manipulate original todos array
     const taskIndex = todos.findIndex((todo) => todo.id === taskId);

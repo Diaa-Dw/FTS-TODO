@@ -1,4 +1,5 @@
 //Handler function for fetching data from API
+import { changeTodoStatus } from "./js/changeTodoStatus.js";
 import { displayTodos } from "./js/displayTodos.js";
 import { fetchTodos } from "./js/fetchTodos.js";
 import { handleAddTask } from "./js/handleAddTask.js";
@@ -14,7 +15,7 @@ const tableBodyElement = document.querySelector(".todo-list__table-body");
 let todos = [];
 
 //Function that call fetchTodos and then call displayTodos to show in the table
-async function loadTods() {
+async function loadTodos() {
   try {
     todos = await fetchTodos();
     displayTodos(todos);
@@ -39,7 +40,14 @@ function onRemoveTask(e) {
   removeTaskHandler(e, todos);
 }
 
-document.addEventListener("DOMContentLoaded", loadTods);
-
+function onTaskStatusChange(e) {
+  changeTodoStatus(e, todos);
+}
+//Event to update and display tasks when updating UI
+document.addEventListener("DOMContentLoaded", loadTodos);
+//Event to handle add task
 todoFormElement.addEventListener("submit", onAddTask);
+//Event to handle remove task
 tableBodyElement.addEventListener("click", onRemoveTask);
+//Event to handle update task status
+tableBodyElement.addEventListener("click", onTaskStatusChange);

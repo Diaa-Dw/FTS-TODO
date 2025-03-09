@@ -32,11 +32,10 @@
   color: var(--primary-color);
 }
 
-.todo-list__task-status.completed {
+.todo-list__table-row[data-status="completed"] .todo-list__task-status {
   background-color: var(--green);
 }
-
-.todo-list__task-status.pending {
+.todo-list__table-row[data-status="pending"] .todo-list__task-status {
   background-color: var(--orange);
 }
 

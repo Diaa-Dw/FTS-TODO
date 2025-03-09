@@ -29,5 +29,15 @@ export const onTaskCountChange = (action, task = null) => {
           Number(pendingTasksCountElement.textContent) - 1;
       }
     }
+
+    case "update": {
+      const change = task.completed ? 1 : -1;
+
+      completedTasksCountElement.textContent =
+        Number(completedTasksCountElement.textContent) + change;
+
+      pendingTasksCountElement.textContent =
+        Number(pendingTasksCountElement.textContent) - change;
+    }
   }
 };
