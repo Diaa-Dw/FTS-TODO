@@ -4,13 +4,14 @@ import { displayTodos } from "./js/displayTodos.js";
 import { fetchTodos } from "./js/fetchTodos.js";
 import { handleAddTask } from "./js/handleAddTask.js";
 import { removeTaskHandler } from "./js/handleRemoveTask.js";
+import { searchTodosHandler } from "./js/searchTodos.js";
 import { onTaskCountChange } from "./js/taskCountHandler.js";
 import { updateTableFooter } from "./js/updateFooter.js";
 
 //DOM
 const todoFormElement = document.querySelector(".todo-list__form");
 const tableBodyElement = document.querySelector(".todo-list__table-body");
-
+const searchInputElement = document.querySelector(".todo-list__search");
 // Global array for saving todos inside it
 let todos = [];
 
@@ -39,10 +40,15 @@ async function onAddTask(e) {
 function onRemoveTask(e) {
   removeTaskHandler(e, todos);
 }
-
+//Function to handle toggle task status
 function onTaskStatusChange(e) {
   changeTodoStatus(e, todos);
 }
+//Function to handle changing of search input
+const onSearchChange = (e) => {
+  searchTodosHandler(e, todos);
+};
+
 //Event to update and display tasks when updating UI
 document.addEventListener("DOMContentLoaded", loadTodos);
 //Event to handle add task
@@ -51,3 +57,5 @@ todoFormElement.addEventListener("submit", onAddTask);
 tableBodyElement.addEventListener("click", onRemoveTask);
 //Event to handle update task status
 tableBodyElement.addEventListener("click", onTaskStatusChange);
+//Event to handle search input and filter todos
+searchInputElement.addEventListener("input", onSearchChange);
