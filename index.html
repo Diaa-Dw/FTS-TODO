@@ -7,7 +7,132 @@
 
     <!-- Link main.css  -->
     <link rel="stylesheet" href="./style/main.css" />
+
+    <!-- Link font-awesome library for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <title>TODO</title>
+
+    <!-- Link index.js script -->
+    <script type="module" defer src="./index.js"></script>
   </head>
-  <body></body>
+  <body>
+    <!-- header section start -->
+    <header class="header">
+      <h1 class="header__title">TODO</h1>
+      <button class="theme-toggle">
+        <img
+          src="./assets/images/icon-sun.svg"
+          alt="light-theme"
+          class="theme-toggle__icon theme-toggle__icon--light active"
+        />
+        <img
+          src="./assets/images/icon-moon.svg"
+          alt="dark-theme"
+          class="theme-toggle__icon theme-toggle__icon--dark"
+        />
+      </button>
+    </header>
+    <!-- header section end -->
+
+    <!-- main section start -->
+    <main class="todo-list">
+      <!-- Form section start -->
+      <section class="todo-list__form-container">
+        <form aria-label="Add new task" class="todo-list__form">
+          <div class="todo-list__input-container">
+            <label for="add_task">
+              <i class="fa-solid fa-plus"></i>
+            </label>
+            <input
+              type="text"
+              name="add_task"
+              id="add_task"
+              placeholder="Add new task..."
+              class="todo-list__input--add"
+              required
+            />
+          </div>
+          <button type="submit" class="todo-list__button--add btn">Add</button>
+        </form>
+        <div class="todo-list__input-container">
+          <label for="search_task">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </label>
+          <input
+            type="search"
+            name="search_task"
+            id="search_task"
+            placeholder="Search tasks..."
+            aria-label="Search tasks"
+            class="todo-list__search"
+          />
+        </div>
+      </section>
+
+      <!-- Form section end -->
+
+      <!-- table section start -->
+      <section class="todo-list__table-container">
+        <table class="todo-list__table">
+          <!-- table-header start -->
+          <thead class="todo-list__table-head">
+            <tr class="todo-list__table-row">
+              <th class="todo-list__table-header">ID</th>
+              <th class="todo-list__table-header">Description</th>
+              <th class="todo-list__table-header">Status</th>
+              <th class="todo-list__table-header">Actions</th>
+            </tr>
+          </thead>
+          <!-- table-header end -->
+
+          <!-- table-body starzt -->
+          <tbody class="todo-list__table-body"></tbody>
+          <!-- table-body end -->
+        </table>
+      </section>
+      <!-- table section end -->
+    </main>
+    <!-- main section end -->
+
+    <footer class="footer">
+      <div class="task-count">
+        <p class="task-count__total">
+          Total Tasks:
+          <span class="task-count__number task-count__number--all">0</span>
+        </p>
+
+        <p class="task-count__status">
+          <span class="task-count__completed"
+            >Completed:
+            <span class="task-count__number task-count__number--completed"
+              >0</span
+            ></span
+          >
+          <span class="task-count__pending"
+            >Pending:
+            <span class="task-count__number task-count__number--pending"
+              >0</span
+            ></span
+          >
+        </p>
+      </div>
+
+      <p class="footer__text">
+        Made with <span class="footer__heart">&#10084;</span> by
+        <a
+          href="https://diaa-dwikat.netlify.app"
+          target="_blank"
+          class="footer__link"
+          >Diaa</a
+        >
+      </p>
+    </footer>
+  </body>
 </html>
