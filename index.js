@@ -10,6 +10,7 @@ import {
 } from "./js/localStorageHelper.js";
 import { searchTodosHandler } from "./js/searchTodos.js";
 import { onTaskCountChange } from "./js/taskCountHandler.js";
+import { todoInlineEditHanlder } from "./js/todoInlineEdit.js";
 import { updateTableFooter } from "./js/updateFooter.js";
 
 //DOM
@@ -23,7 +24,6 @@ let todos = [];
 async function loadTodos() {
   try {
     const storedTodosInLocalStorage = getTodosLocalStorage();
-    localStorage.clear();
     todos = [...storedTodosInLocalStorage];
     if (!todos.length) {
       todos = await fetchTodos();
@@ -40,7 +40,7 @@ async function onAddTask(e) {
   e.preventDefault();
   const createdTask = await handleAddTask();
 
-  todos = [createdTask, ...todos];
+  if (createdTask) todos = [createdTask, ...todos];
 
   onTaskCountChange("add");
 }
@@ -62,6 +62,10 @@ const handleBeforeUnload = () => {
   setTodosToLocalStorage(todos);
 };
 
+const taskEditHandler = (e) => {
+  todoInlineEditHanlder(e, todos);
+};
+
 //Event to update and display tasks when updating UI
 document.addEventListener("DOMContentLoaded", loadTodos);
 //Event to handle add task
@@ -74,3 +78,5 @@ tableBodyElement.addEventListener("click", onTaskStatusChange);
 searchInputElement.addEventListener("input", onSearchChange);
 //Event to save todos into localStorage before browser refuresh or close
 window.addEventListener("beforeunload", handleBeforeUnload);
+//Event to handle inline edit of todo
+tableBodyElement.addEventListener("click", taskEditHandler);
