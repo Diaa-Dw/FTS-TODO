@@ -1,0 +1,92 @@
+//Handler function for fetching data from API
+import { changeTodoStatus } from "./js/features/changeTodoStatus.js";
+import { displayTodos } from "./js/utils/displayTodos.js";
+import { fetchTodos } from "./js/api/fetchTodos.js";
+import { handleAddTask } from "./js/features/handleAddTask.js";
+import { removeTaskHandler } from "./js/features/handleRemoveTask.js";
+import { loadSavedTheme } from "./js/theme/loadSavedTheme.js";
+import {
+  getTodosLocalStorage,
+  setTodosToLocalStorage,
+} from "./js/storage/localStorageHelper.js";
+import { searchTodosHandler } from "./js/features/searchTodos.js";
+import { onTaskCountChange } from "./js/utils/taskCountHandler.js";
+import { todoInlineEditHandler } from "./js/features/todoInlineEdit.js";
+import { updateTableFooter } from "./js/components/updateFooter.js";
+import { toggleThemeHandler } from "./js/theme/updateTheme.js";
+
+//DOM
+const todoFormElement = document.querySelector(".todo-list__form");
+const tableBodyElement = document.querySelector(".todo-list__table-body");
+const searchInputElement = document.querySelector(".todo-list__search");
+const themeBtnElement = document.querySelector(".theme-toggle");
+// Global array for saving todos inside it
+let todos = [];
+
+//Function that call fetchTodos and then call displayTodos to show in the table
+async function loadTodos() {
+  try {
+    const storedTodosInLocalStorage = getTodosLocalStorage();
+    todos = [...storedTodosInLocalStorage];
+    if (!todos.length) {
+      todos = await fetchTodos();
+    }
+    displayTodos(todos);
+    updateTableFooter(todos);
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+// Function to handle clicking on add task
+async function onAddTask(e) {
+  e.preventDefault();
+  const createdTask = await handleAddTask();
+
+  if (createdTask) {
+    todos = [createdTask, ...todos];
+    setTodosToLocalStorage(todos);
+  }
+
+  onTaskCountChange("add");
+}
+
+// Function to handle remove task
+function onRemoveTask(e) {
+  removeTaskHandler(e, todos);
+}
+//Function to handle toggle task status
+function onTaskStatusChange(e) {
+  changeTodoStatus(e, todos);
+}
+//Function to handle changing of search input
+const onSearchChange = (e) => {
+  searchTodosHandler(e, todos);
+};
+//Save todos to localStorage before closing or refrush window
+const handleBeforeUnload = () => {
+  setTodosToLocalStorage(todos);
+};
+
+const taskEditHandler = (e) => {
+  todoInlineEditHandler(e, todos);
+};
+
+//Event to load user prefered theme when windows loaded
+window.addEventListener("load", loadSavedTheme);
+//Event to handle toggle between light and dark theme
+themeBtnElement.addEventListener("click", toggleThemeHandler);
+//Event to update and display tasks when updating UI
+document.addEventListener("DOMContentLoaded", loadTodos);
+//Event to handle add task
+todoFormElement.addEventListener("submit", onAddTask);
+//Event to handle remove task
+tableBodyElement.addEventListener("click", onRemoveTask);
+//Event to handle update task status
+tableBodyElement.addEventListener("click", onTaskStatusChange);
+//Event to handle search input and filter todos
+searchInputElement.addEventListener("input", onSearchChange);
+//Event to save todos into localStorage before browser refuresh or close
+window.addEventListener("beforeunload", handleBeforeUnload);
+//Event to handle inline edit of todo
+tableBodyElement.addEventListener("click", taskEditHandler);
