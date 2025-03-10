@@ -1,4 +1,4 @@
-export const todoInlineEditHanlder = (e, todos) => {
+export const todoInlineEditHandler = (e, todos) => {
   const { target } = e;
   if (!target.classList.contains("todo-list__table-cell")) {
     return;
@@ -10,14 +10,15 @@ export const todoInlineEditHanlder = (e, todos) => {
   inputEl.value = taskContent;
   inputEl.classList.add("todo-list__table-cell-input");
   target.append(inputEl);
+  inputEl.focus();
 
   inputEl.addEventListener("blur", () => {
-    handleTodoUpdate(inputEl, target, todos);
+    handleTodoUpdate(inputEl, target, todos, taskContent);
   });
 
   inputEl.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      handleTodoUpdate(inputEl, target, todos);
+      handleTodoUpdate(inputEl, target, todos, taskContent);
     }
   });
 };
@@ -35,7 +36,16 @@ const updateTodosHandler = (todos, taskEl) => {
   todos[taskIndex].todo = taskEl.textContent;
 };
 
-const handleTodoUpdate = (inputEl, target, todos) => {
+const handleTodoUpdate = (inputEl, target, todos, prevTaskContent) => {
+  if (!isValidInput(inputEl.value)) {
+    alert("Please enter a task with at least 3 characters.");
+    inputEl.value = prevTaskContent;
+  }
+
   updateTodoContent(inputEl, target);
   updateTodosHandler(todos, target);
+};
+
+const isValidInput = (value) => {
+  return value.length >= 3;
 };

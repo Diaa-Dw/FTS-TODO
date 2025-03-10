@@ -1,4 +1,10 @@
+import { sanitizeHTML } from "../utils/sanitizerHTML.js";
+
 export const getTodoTemplate = (todo) => {
+  if (!todo || typeof todo !== "object") {
+    throw new Error("Invalid todo object.");
+  }
+
   const status = todo.completed ? "completed" : "pending";
   return `
             <tr class="todo-list__table-row" data-id=${
@@ -6,7 +12,7 @@ export const getTodoTemplate = (todo) => {
             } data-status=${status}>
               <td class="todo-list__table-cell">${todo.id}</td>
               <td class="todo-list__table-cell" data-label="Task">
-                ${todo.todo}
+                ${sanitizeHTML(todo.todo)}
               </td>
               <td class="todo-list__table-cell" data-label="Status">
                 <span class="todo-list__task-status">
@@ -20,8 +26,7 @@ export const getTodoTemplate = (todo) => {
                     status === "completed"
                       ? `<i class="fa-solid fa-hourglass-half"></i>`
                       : `<i class="fas fa-check"></i>`
-                  }
-                    
+                  } 
                   </button>
                   <button class="todo-list__button todo-list__button--delete">
                     <i class="fas fa-trash"></i>

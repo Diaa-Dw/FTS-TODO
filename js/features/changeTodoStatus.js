@@ -11,7 +11,7 @@ export const changeTodoStatus = async (e, todos) => {
   }
 
   try {
-    target.disable = true;
+    target.disabled = true;
     let updatedTask = null;
 
     const rowElement = target.closest(".todo-list__table-row");
@@ -33,7 +33,7 @@ export const changeTodoStatus = async (e, todos) => {
     const errorMessage = `Update task status error: ${error.message}`;
     alert(errorMessage);
   } finally {
-    target.disable = false;
+    target.disabled = false;
   }
 };
 

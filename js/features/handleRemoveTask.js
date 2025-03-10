@@ -15,7 +15,7 @@ export const removeTaskHandler = async (e, todos) => {
     return;
   }
   try {
-    target.disable = true;
+    target.disabled = true;
     let removedTask = null;
 
     const rowElement = target.closest(".todo-list__table-row");
@@ -27,7 +27,7 @@ export const removeTaskHandler = async (e, todos) => {
 
     //IF the id of task is equal or less than  254 that means it is exisist on server and we can send a delete request to server
     if (taskId <= SERVER_TASK_ID_LIMIT) {
-      removedTask = await dleteTaskFromServer(taskId);
+      removedTask = await deleteTaskFromServer(taskId);
     } else {
       removedTask = todos[taskIndex];
     }
@@ -40,22 +40,22 @@ export const removeTaskHandler = async (e, todos) => {
     const errorMessage = `Delete taske error: ${error.message}`;
     alert(errorMessage);
   } finally {
-    target.disable = false;
+    target.disabled = false;
   }
 };
 
-const dleteTaskFromServer = async (taskId) => {
+const deleteTaskFromServer = async (taskId) => {
   try {
     const res = await fetch(`https://dummyjson.com/todos/${taskId}`, {
       method: "DELETE",
     });
     if (!res.ok) {
-      throw new Error(`Somthing went wrong while deleteing task id=${taskId}`);
+      throw new Error(`Something went wrong while deleteing task id=${taskId}`);
     }
     const data = await res.json();
     return data;
   } catch (error) {
-    const errorMessage = `Delete taske error: ${error.message}`;
+    const errorMessage = `Delete task error: ${error.message}`;
     alert(errorMessage);
   }
 };

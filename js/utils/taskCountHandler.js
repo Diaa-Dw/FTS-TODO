@@ -28,6 +28,8 @@ export const onTaskCountChange = (action, task = null) => {
         pendingTasksCountElement.textContent =
           Number(pendingTasksCountElement.textContent) - 1;
       }
+
+      break;
     }
 
     case "update": {
@@ -38,6 +40,8 @@ export const onTaskCountChange = (action, task = null) => {
 
       pendingTasksCountElement.textContent =
         Number(pendingTasksCountElement.textContent) - change;
+
+      break;
     }
   }
 };

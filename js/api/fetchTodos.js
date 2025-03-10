@@ -12,5 +12,3 @@ export const fetchTodos = async () => {
     alert(errorMessage);
   }
 };
-
-fetchTodos();

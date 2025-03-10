@@ -6,9 +6,9 @@ const pendingTasksCountElement = document.querySelector(
   ".task-count__number--pending"
 );
 
-export const updateTableFooter = (todots) => {
-  const tasksCount = todots.length;
-  const completedTasksCount = todots.filter((todo) => todo.completed).length;
+export const updateTableFooter = (todos) => {
+  const tasksCount = todos.length;
+  const completedTasksCount = todos.filter((todo) => todo.completed).length;
   const pendingTaskCount = tasksCount - completedTasksCount;
 
   allTasksCountElement.textContent = tasksCount;

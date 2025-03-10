@@ -11,7 +11,7 @@ import {
 } from "./js/storage/localStorageHelper.js";
 import { searchTodosHandler } from "./js/features/searchTodos.js";
 import { onTaskCountChange } from "./js/utils/taskCountHandler.js";
-import { todoInlineEditHanlder } from "./js/features/todoInlineEdit.js";
+import { todoInlineEditHandler } from "./js/features/todoInlineEdit.js";
 import { updateTableFooter } from "./js/components/updateFooter.js";
 import { toggleThemeHandler } from "./js/theme/updateTheme.js";
 
@@ -43,7 +43,10 @@ async function onAddTask(e) {
   e.preventDefault();
   const createdTask = await handleAddTask();
 
-  if (createdTask) todos = [createdTask, ...todos];
+  if (createdTask) {
+    todos = [createdTask, ...todos];
+    setTodosToLocalStorage(todos);
+  }
 
   onTaskCountChange("add");
 }
@@ -66,7 +69,7 @@ const handleBeforeUnload = () => {
 };
 
 const taskEditHandler = (e) => {
-  todoInlineEditHanlder(e, todos);
+  todoInlineEditHandler(e, todos);
 };
 
 //Event to load user prefered theme when windows loaded
