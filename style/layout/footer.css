@@ -1,0 +1,38 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__link {
+  position: relative;
+  padding: 0.5rem 1rem;
+
+  color: var(--secondary-font-color);
+}
+
+.footer__link::before {
+  content: "";
+  width: 0;
+  height: 100%;
+
+  position: absolute;
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 3px;
+
+  transform: skewX(-5deg);
+  transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.footer__link:hover::before {
+  content: "Diaa";
+
+  width: 100%;
+
+  color: var(--primary-color);
+  text-decoration: underline;
+
+  background-color: var(--secondary-font-color);
+}
