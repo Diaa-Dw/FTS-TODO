@@ -1,0 +1,68 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Styling tasks count container */
+.task-count {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+.task-count__status {
+  display: flex;
+  gap: 20px;
+}
+
+.task-count__number--all {
+  color: var(--blue);
+}
+
+.task-count__number--completed {
+  color: var(--green);
+}
+
+.task-count__number--pending {
+  color: var(--orange);
+}
+
+.footer__link {
+  position: relative;
+  padding: 0.5rem 1rem;
+
+  color: var(--secondary-font-color);
+}
+
+.footer__link::before {
+  content: "";
+  width: 0;
+  height: 100%;
+
+  position: absolute;
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 3px;
+
+  transform: skewX(-5deg);
+  transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.footer__link:hover::before {
+  content: "Diaa";
+
+  width: 100%;
+
+  color: var(--primary-color);
+  text-decoration: underline;
+
+  background-color: var(--secondary-font-color);
+}
