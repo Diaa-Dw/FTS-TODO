@@ -39,6 +39,12 @@
   background-color: var(--pending-status-color);
 }
 
+.todo-list__table-row[data-status="completed"]
+  .todo-list__table-cell[data-label="Task"] {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
 .todo-list__actions-container {
   display: flex;
   align-items: center;
